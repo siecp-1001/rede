@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>user note</h1>
+  {% for notes in object_list %}
+    <p>
+      {{ notes.NOTE }}<br>
+      {{ notes.date }}<br>
+    
+    </p>
+    <p>
+      <a href="{% url 'main:note_update' notes.id %}">Update address</a>
+    </p>
+    <p>
+      <a href="{% url 'main:note_delete' notes.id %}">Delete address</a>
+    </p>
+    {% if not forloop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+  <p>
+    <a href="{% url 'main:note_create'   %}">Add new address</a>
+  </p>
+{% endblock content %}
